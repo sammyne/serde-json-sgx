@@ -1,5 +1,6 @@
 //! When serializing or deserializing JSON goes wrong.
 
+use std::prelude::v1::*;
 use std::error;
 use std::fmt::{self, Debug, Display};
 use std::io;
@@ -334,6 +335,7 @@ impl Display for ErrorCode {
 }
 
 impl error::Error for Error {
+    #[allow(deprecated)]
     fn description(&self) -> &str {
         match self.err.code {
             ErrorCode::Io(ref err) => error::Error::description(err),

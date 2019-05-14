@@ -1,5 +1,6 @@
 //! Deserialize JSON data to a Rust data structure.
 
+use std::prelude::v1::*;
 use std::io;
 use std::marker::PhantomData;
 use std::result;

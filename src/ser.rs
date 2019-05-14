@@ -1,5 +1,6 @@
 //! Serialize a Rust data structure into JSON data.
 
+use std::prelude::v1::*;
 use std::fmt;
 use std::io;
 use std::num::FpCategory;

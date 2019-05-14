@@ -1,3 +1,4 @@
+use std::prelude::v1::*;
 use std::fmt;
 use std::ops;
 
@@ -132,6 +133,7 @@ where
 
 // Prevent users from implementing the Index trait.
 mod private {
+    use std::prelude::v1::*;
     pub trait Sealed {}
     impl Sealed for usize {}
     impl Sealed for str {}

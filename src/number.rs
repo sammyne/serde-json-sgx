@@ -1,3 +1,4 @@
+use std::prelude::v1::*;
 use error::Error;
 use serde::de::{self, Unexpected, Visitor};
 use serde::{Deserialize, Deserializer, Serialize, Serializer};

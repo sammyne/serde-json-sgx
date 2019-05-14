@@ -92,6 +92,7 @@
 //! [from_slice]: https://docs.serde.rs/serde_json/de/fn.from_slice.html
 //! [from_reader]: https://docs.serde.rs/serde_json/de/fn.from_reader.html
 
+use std::prelude::v1::*;
 use std::fmt::{self, Debug};
 use std::io;
 use std::mem;

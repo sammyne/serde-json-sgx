@@ -6,6 +6,7 @@
 //! [`BTreeMap`]: https://doc.rust-lang.org/std/collections/struct.BTreeMap.html
 //! [`IndexMap`]: https://docs.rs/indexmap/*/indexmap/map/struct.IndexMap.html
 
+use std::prelude::v1::*;
 use serde::{de, ser};
 use std::borrow::Borrow;
 use std::fmt::{self, Debug};
