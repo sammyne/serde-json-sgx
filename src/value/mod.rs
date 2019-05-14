@@ -92,6 +92,7 @@
 //! [from_slice]: https://docs.serde.rs/serde_json/de/fn.from_slice.html
 //! [from_reader]: https://docs.serde.rs/serde_json/de/fn.from_reader.html
 
+use std::prelude::v1::*;
 use std::fmt::{self, Debug};
 use std::io;
 use std::mem;
@@ -201,8 +202,8 @@ impl<'a, 'b> io::Write for WriterFormatter<'a, 'b> {
             // maps it to fmt::Error
             io::Error::new(io::ErrorKind::Other, "fmt error")
         }
-        let s = try!(str::from_utf8(buf).map_err(io_error));
-        try!(self.inner.write_str(s).map_err(io_error));
+        let s = str::from_utf8(buf).map_err(io_error)?;
+        self.inner.write_str(s).map_err(io_error)?;
         Ok(buf.len())
     }
 

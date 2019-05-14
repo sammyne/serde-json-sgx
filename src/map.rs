@@ -6,6 +6,7 @@
 //! [`BTreeMap`]: https://doc.rust-lang.org/std/collections/struct.BTreeMap.html
 //! [`IndexMap`]: https://docs.rs/indexmap/*/indexmap/map/struct.IndexMap.html
 
+use std::prelude::v1::*;
 use serde::{de, ser};
 use std::borrow::Borrow;
 use std::fmt::{self, Debug};
@@ -299,10 +300,10 @@ impl ser::Serialize for Map<String, Value> {
         S: ser::Serializer,
     {
         use serde::ser::SerializeMap;
-        let mut map = try!(serializer.serialize_map(Some(self.len())));
+        let mut map = serializer.serialize_map(Some(self.len()))?;
         for (k, v) in self {
-            try!(map.serialize_key(k));
-            try!(map.serialize_value(v));
+            map.serialize_key(k)?;
+            map.serialize_value(v)?;
         }
         map.end()
     }
@@ -338,7 +339,7 @@ impl<'de> de::Deserialize<'de> for Map<String, Value> {
             {
                 let mut values = Map::new();
 
-                while let Some((key, value)) = try!(visitor.next_entry()) {
+                while let Some((key, value)) = visitor.next_entry()? {
                     values.insert(key, value);
                 }
 

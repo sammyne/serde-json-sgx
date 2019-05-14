@@ -10,27 +10,29 @@ keywords = ["json", "serde", "serialization"]
 categories = ["encoding"]
 readme = "README.md"
 include = ["Cargo.toml", "src/**/*.rs", "README.md", "LICENSE-APACHE", "LICENSE-MIT"]
+exclude = ["/sgx/*"]
 
 [badges]
 travis-ci = { repository = "serde-rs/json" }
 appveyor = { repository = "serde-rs/json" }
 
 [dependencies]
-serde = "1.0.60"
-indexmap = { version = "1.0", optional = true }
-itoa = "0.4.3"
+serde = { git = "https://github.com/mesalock-linux/serde-sgx.git" }
+indexmap = { git = "https://github.com/mesalock-linux/indexmap-sgx.git", optional = true }
+itoa = { git = "https://github.com/mesalock-linux/itoa-sgx.git" }
 ryu = "1.0"
+sgx_tstd = { rev = "v1.1.0", git = "https://github.com/apache/teaclave-sgx-sdk.git", optional = true }
 
 [dev-dependencies]
-automod = "0.1"
-rustversion = "0.1"
-serde_bytes = "0.11"
-serde_derive = "1.0"
-serde_stacker = "0.1"
-trybuild = "1.0"
+#automod = "0.1"
+#rustversion = "0.1"
+#serde_bytes = "0.11"
+#serde_derive = "1.0"
+#serde_stacker = "0.1"
+#trybuild = "1.0"
 
-[workspace]
-members = ["tests/crate"]
+#[workspace]
+#members = ["tests/crate"]
 
 [package.metadata.docs.rs]
 features = ["raw_value", "unbounded_depth"]
@@ -42,7 +44,7 @@ features = ["raw_value"]
 ### FEATURES #################################################################
 
 [features]
-default = []
+default = ["mesalock_sgx"]
 
 # Use a different representation for the map type of serde_json::Value.
 # This allows data to be read into a Value and written back to a JSON string
@@ -66,3 +68,5 @@ raw_value = []
 # overflow the stack after deserialization has completed, including, but not
 # limited to, Display and Debug and Drop impls.
 unbounded_depth = []
+
+mesalock_sgx = ["sgx_tstd"]
