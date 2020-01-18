@@ -17,11 +17,11 @@ travis-ci = { repository = "serde-rs/json" }
 appveyor = { repository = "serde-rs/json" }
 
 [dependencies]
-serde = { git = "https://github.com/mesalock-linux/serde-sgx.git" }
-indexmap = { git = "https://github.com/mesalock-linux/indexmap-sgx.git", optional = true }
-itoa = { git = "https://github.com/mesalock-linux/itoa-sgx.git" }
+serde = { git = "https://github.com/mesalock-linux/serde-sgx", branch = "v1.0.9-backup" }
+indexmap = { git = "https://github.com/mesalock-linux/indexmap-sgx.git", optional = true, tag = "sgx_1.0.9" }
+itoa = { git = "https://github.com/mesalock-linux/itoa-sgx.git", tag = "sgx_1.0.9" }
 ryu = "1.0"
-sgx_tstd = { rev = "v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk.git", optional = true }
+sgx_tstd = { git = "https://github.com/apache/teaclave-sgx-sdk", optional = true, tag = "v1.0.9" }
 
 [dev-dependencies]
 automod = "0.1"
